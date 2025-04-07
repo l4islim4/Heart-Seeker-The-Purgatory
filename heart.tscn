@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg8yyf3bfl7rj"]
+
+[ext_resource type="Texture2D" uid="uid://d2qiqrqwbuc5x" path="res://coração lindi.png" id="1_ma10m"]
+[ext_resource type="Script" path="res://heart.gd" id="1_qwk5n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7obl"]
+radius = 5.0
+
+[node name="Heart" type="Area2D" groups=["Hearts"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qwk5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.695313, 0.679687)
+texture = ExtResource("1_ma10m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_q7obl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

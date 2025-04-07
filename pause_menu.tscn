@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb4jt6g8wnbgh"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_wiwgh"]
+
+[node name="Pause_Menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wiwgh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.423529)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu_holder" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Resume_button" type="Button" parent="CenterContainer/Menu_holder"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/Menu_holder"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit_button" type="Button" parent="CenterContainer/Menu_holder"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="CenterContainer/Menu_holder/Resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Menu_holder/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Menu_holder/Quit_button" to="." method="_on_quit_button_pressed"]

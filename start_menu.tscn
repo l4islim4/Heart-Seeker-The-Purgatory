@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://2fb7ej6osjrn"]
+
+[ext_resource type="Script" path="res://start_menu.gd" id="1_iwg2h"]
+[ext_resource type="Texture2D" uid="uid://doxilb24a2ojh" path="res://tela_fundo.png" id="2_75vc0"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iwg2h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_75vc0")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 273.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 24
+text = "HEART SEEKER"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

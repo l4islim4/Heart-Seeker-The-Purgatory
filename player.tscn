@@ -1,0 +1,149 @@
+[gd_scene load_steps=16 format=3 uid="uid://bnwwggmcdo8sm"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_2g0pt"]
+[ext_resource type="Texture2D" uid="uid://buts7s3oupyaq" path="res://player.png" id="2_my0ly"]
+[ext_resource type="Resource" uid="uid://c03vkrowlts3h" path="res://DefaultMovementData.tres" id="2_su48h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elqx6"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxfru"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnpq7"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsxvt"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a30jg"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5l6u"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkpnr"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb4gx"]
+atlas = ExtResource("2_my0ly")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yy6yf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elqx6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxfru")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnpq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsxvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a30jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5l6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkpnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb4gx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mnuw"]
+size = Vector2(8, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlv48"]
+size = Vector2(6, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaisg"]
+size = Vector2(2, 17)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+floor_constant_speed = true
+floor_snap_length = 3.0
+safe_margin = 0.1
+script = ExtResource("1_2g0pt")
+movement_data = ExtResource("2_su48h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_yy6yf")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_6mnuw")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -32)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_mlv48")
+
+[node name="CheckParede" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckParede"]
+position = Vector2(6, -10)
+shape = SubResource("RectangleShape2D_yaisg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CheckParede"]
+position = Vector2(-6, -10)
+shape = SubResource("RectangleShape2D_yaisg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -152.0
+offset_top = -112.0
+offset_right = -96.0
+offset_bottom = -104.0
+theme_override_font_sizes/font_size = 30
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
+[connection signal="body_entered" from="CheckParede" to="." method="_on_check_parede_body_entered"]
+[connection signal="body_exited" from="CheckParede" to="." method="_on_check_parede_body_exited"]

@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj60vtxp3cshw"]
+
+[ext_resource type="Script" path="res://Levels/script_level_1.gd" id="1_txxem"]
+[ext_resource type="PackedScene" uid="uid://bnwwggmcdo8sm" path="res://player.tscn" id="2_17snv"]
+[ext_resource type="PackedScene" uid="uid://bdx1yhh2hfnfj" path="res://spikes.tscn" id="3_l30ab"]
+[ext_resource type="PackedScene" uid="uid://dg8yyf3bfl7rj" path="res://heart.tscn" id="4_7wy3j"]
+[ext_resource type="PackedScene" uid="uid://b618nfcmtw6cl" path="res://level_completed.tscn" id="5_0fa50"]
+[ext_resource type="PackedScene" uid="uid://b7fs1id56lku2" path="res://level_tile_map.tscn" id="6_ljwe0"]
+
+[sub_resource type="Animation" id="Animation_uwkdm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartIn/CenterContainer/StartInLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Start in:3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartIn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v5pn5"]
+resource_name = "countdown"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartIn/CenterContainer/StartInLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Start in:3", "Start in:2", "Start in:1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartIn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3p2tr"]
+_data = {
+"RESET": SubResource("Animation_uwkdm"),
+"countdown": SubResource("Animation_v5pn5")
+}
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_txxem")
+
+[node name="Player" parent="." instance=ExtResource("2_17snv")]
+position = Vector2(72, 96)
+
+[node name="Spikes" parent="." instance=ExtResource("3_l30ab")]
+position = Vector2(280, 152)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_l30ab")]
+position = Vector2(296, 152)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_l30ab")]
+position = Vector2(120, 152)
+
+[node name="Heart" parent="." instance=ExtResource("4_7wy3j")]
+position = Vector2(104, 118)
+
+[node name="Heart2" parent="." instance=ExtResource("4_7wy3j")]
+position = Vector2(294, 38)
+
+[node name="Heart3" parent="." instance=ExtResource("4_7wy3j")]
+position = Vector2(244, -10)
+
+[node name="Heart4" parent="." instance=ExtResource("4_7wy3j")]
+position = Vector2(312, -10)
+
+[node name="Heart5" parent="." instance=ExtResource("4_7wy3j")]
+position = Vector2(26, 50)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_0fa50")]
+visible = false
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+
+[node name="StartIn" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.282353)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StartIn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartInLabel" type="Label" parent="CanvasLayer/StartIn/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start in:3"
+
+[node name="LevelTileMap" parent="." instance=ExtResource("6_ljwe0")]
+layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 1, 131072, 131072, 1, 196608, 131072, 1, 262144, 131072, 1, 327680, 131072, 1, 393216, 131072, 1, 458752, 131072, 1, 524288, 327680, 2, 589824, 65536, 1, 655360, 65536, 1, 720896, 65536, 2, 720897, 65536, 2, 720898, 65536, 2, 720899, 65536, 2, 720900, 65536, 2, 720901, 65536, 2, 720902, 65536, 2, 720903, 65536, 2, 720904, 65536, 2, 720905, 65536, 2, 720906, 65536, 2, 720907, 65536, 2, 720908, 65536, 2, 720909, 65536, 2, 720910, 65536, 2, 720911, 65536, 2, 720912, 65536, 2, 720913, 65536, 2, 720914, 65536, 2, 720915, 65536, 2, 655379, 393216, 2, 589843, 0, 1, 524307, 0, 1, 458771, 0, 1, 393235, 0, 1, 327699, 0, 1, 262163, 0, 1, 196627, 0, 1, 131091, 0, 1, 65555, 0, 1, 19, 0, 0, 655378, 65536, 0, 655377, 65536, 0, 655376, 327680, 2, 655375, 65536, 1, 655374, 65536, 1, 655373, 65536, 1, 655372, 65536, 1, 655371, 65536, 1, 655370, 65536, 1, 655369, 65536, 1, 655368, 393216, 2, 655367, 65536, 0, 655366, 327680, 2, 524289, 65536, 0, 589825, 65536, 1, 655361, 65536, 1, 655363, 65536, 1, 655364, 65536, 1, 655365, 65536, 1, 655362, 65536, 1, 589826, 65536, 1, 524290, 65536, 0, 589827, 65538, 0, 589828, 327681, 0, 589829, 65536, 1, 589830, 131072, 1, 589832, 0, 0, 589833, 65536, 0, 589834, 327681, 0, 589835, 65536, 1, 589836, 65536, 1, 589837, 65536, 1, 589838, 65536, 1, 589839, 65536, 1, 589840, 131072, 1, 524303, 65536, 1, 524300, 327681, 0, 524301, 65536, 1, 524302, 65536, 1, 458766, 65536, 0, 458767, 65536, 0, 720916, 131072, 2, 655380, 131072, 1, 589844, 131072, 1, 524308, 131072, 1, 458772, 131072, 1, 393236, 131072, 1, 327700, 131072, 1, 262164, 131072, 1, 196628, 131072, 1, 131092, 131072, 1, 65556, 131072, 1, 20, 131072, 0, 196623, 131072, 2, 196622, 0, 2, 131086, 0, 1, 65550, 0, 1, 14, 0, 0, 15, 131072, 0, 65551, 131072, 1, 131087, 131072, 1, 65535, 0, 0, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 0, 1, 655359, 0, 1, 720895, 0, 1, 786431, 0, 2, 524294, 131072, 0, 524291, 393218, 0, 524293, 262145, 0, 524292, 196609, 0, 524298, 196609, 0, 524299, 262145, 0, 524304, 131072, 1, 458768, 131072, 0, 458764, 196609, 0, 458765, 262145, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_3p2tr")
+}

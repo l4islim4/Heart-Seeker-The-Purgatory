@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi1hmi0w5goax"]
+
+[ext_resource type="PackedScene" uid="uid://bj60vtxp3cshw" path="res://world_copy.tscn" id="1_j5onl"]
+[ext_resource type="PackedScene" uid="uid://c7wkt60r6pk7i" path="res://Levels/Level_2.tscn" id="2_3ojsv"]
+[ext_resource type="PackedScene" uid="uid://bb4jt6g8wnbgh" path="res://pause_menu.tscn" id="3_6nnoa"]
+[ext_resource type="PackedScene" uid="uid://bbs3urfemmg32" path="res://HUD.tscn" id="4_rs1io"]
+
+[node name="World" instance=ExtResource("1_j5onl")]
+next_level = ExtResource("2_3ojsv")
+
+[node name="Player" parent="." index="0"]
+position = Vector2(43, -62)
+
+[node name="Spikes" parent="." index="1"]
+position = Vector2(296, -38)
+
+[node name="Spikes2" parent="." index="2"]
+position = Vector2(312, -38)
+
+[node name="Spikes3" parent="." index="3"]
+position = Vector2(136, -38)
+
+[node name="Heart" parent="." index="4"]
+position = Vector2(120, -72)
+
+[node name="Heart2" parent="." index="5"]
+position = Vector2(310, -152)
+
+[node name="Heart3" parent="." index="6"]
+position = Vector2(260, -200)
+
+[node name="Heart4" parent="." index="7"]
+position = Vector2(328, -200)
+
+[node name="Heart5" parent="." index="8"]
+position = Vector2(42, -140)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" index="2"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="level_timer_label" type="Label" parent="CanvasLayer/CenterContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="LevelTileMap" parent="." index="10"]
+position = Vector2(16, -190)
+
+[node name="Pause_Menu" parent="." index="12" instance=ExtResource("3_6nnoa")]
+
+[node name="CanvasLayer2" parent="." index="13" instance=ExtResource("4_rs1io")]
