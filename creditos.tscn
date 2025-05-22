@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx8bc2bthmi4e"]
+
+[ext_resource type="Script" path="res://creditos.gd" id="1_tsdfp"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tsdfp")
+metadata/_edit_horizontal_guides_ = [408.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VScrollBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VScrollBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 200.0
+offset_right = -8.0
+offset_bottom = 566.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+
+
+
+SCREENWRITERS
+
+LAÍS LIMA   PAULO DAVI
+
+DESIGNERS 
+
+LAÍS LIMA    PAULO DAVI   ATILA ORIANO
+
+LEVEL DESIGNER
+
+LAÍS LIMA
+
+PLAYER DESIGNER 
+
+LAÍS LIMA
+
+ITEMS DESIGNER 
+
+ATILA ORIANO
+
+TILEMAP DESINER
+
+LAÍS LIMA
+
+SOUND EFFECTS 
+
+HOOKSOUNDS
+
+AMBIENTATION SOUNDS 
+
+SUNO
+
+PROGRAMMING
+
+LAÍS LIMA   PAULO DAVI
+
+SPECIAL THANKS TO
+
+LEONARDO BRENDO
+
+EVERTON AZEVEDO
+
+TARIK PONSIANO
+
+
+
+
+THANKS FOR PLAYING HEART SEEKER!
+
+
+
+
+
+
+
+
+
+
+GAME STILL IN DEVOLOPMENT..."
+horizontal_alignment = 1

@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Events="*res://Events.gd"
 LevelTransition="*res://level_transition.tscn"
 GlobalPlayerInformation="*res://Global_player_information.gd"
+Tempoglobal="*res://tempoglobal.gd"
 
 [display]
 

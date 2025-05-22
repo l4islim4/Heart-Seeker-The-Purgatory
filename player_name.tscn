@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5vo2nxgebeso"]
+[gd_scene load_steps=3 format=3 uid="uid://c5vo2nxgebeso"]
 
 [ext_resource type="Script" path="res://player_name.gd" id="1_ohb6r"]
+[ext_resource type="PackedScene" uid="uid://dphg5i1mliq55" path="res://menu_sound.tscn" id="2_jq8yd"]
 
 [node name="PlayerName" type="Control"]
 layout_mode = 3
@@ -57,6 +58,8 @@ offset_right = 246.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 16
 text = "Your Nickname:"
+
+[node name="MenuSound" parent="." instance=ExtResource("2_jq8yd")]
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

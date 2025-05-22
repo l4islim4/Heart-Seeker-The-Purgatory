@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2fb7ej6osjrn"]
+[gd_scene load_steps=4 format=3 uid="uid://2fb7ej6osjrn"]
 
 [ext_resource type="Script" path="res://start_menu.gd" id="1_iwg2h"]
 [ext_resource type="Texture2D" uid="uid://doxilb24a2ojh" path="res://tela_fundo.png" id="2_75vc0"]
+[ext_resource type="PackedScene" uid="uid://dphg5i1mliq55" path="res://menu_sound.tscn" id="3_cjs7p"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -54,6 +55,9 @@ offset_right = 273.0
 offset_bottom = 62.0
 theme_override_font_sizes/font_size = 24
 text = "HEART SEEKER"
+
+[node name="MenuSound" parent="." instance=ExtResource("3_cjs7p")]
+position = Vector2(-7, -7)
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

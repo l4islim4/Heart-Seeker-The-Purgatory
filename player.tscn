@@ -102,6 +102,7 @@ sprite_frames = SubResource("SpriteFrames_yy6yf")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_6mnuw")
 
@@ -119,6 +120,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="HazardDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -127,6 +129,7 @@ position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_mlv48")
 
 [node name="CheckParede" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckParede"]
 position = Vector2(6, -10)
@@ -135,14 +138,6 @@ shape = SubResource("RectangleShape2D_yaisg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CheckParede"]
 position = Vector2(-6, -10)
 shape = SubResource("RectangleShape2D_yaisg")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -152.0
-offset_top = -112.0
-offset_right = -96.0
-offset_bottom = -104.0
-theme_override_font_sizes/font_size = 30
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="CheckParede" to="." method="_on_check_parede_body_entered"]

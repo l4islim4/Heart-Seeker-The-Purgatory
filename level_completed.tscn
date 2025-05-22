@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://b618nfcmtw6cl"]
+[gd_scene load_steps=3 format=3 uid="uid://b618nfcmtw6cl"]
+
+[ext_resource type="Script" path="res://level_completed.gd" id="1_j456d"]
+[ext_resource type="PackedScene" uid="uid://b25r6aa0fjw4a" path="res://background_sound.tscn" id="1_wnpm2"]
 
 [node name="LevelCompleted" type="ColorRect"]
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.207843)
+script = ExtResource("1_j456d")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -17,5 +21,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
+visible = false
 layout_mode = 2
 text = "Level Completed!"
+
+[node name="BackgroundSound" parent="." instance=ExtResource("1_wnpm2")]

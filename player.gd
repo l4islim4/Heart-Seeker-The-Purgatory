@@ -15,8 +15,7 @@ var isDashing = false
 var isHanging = false
 
 func _ready():
-	$Label.text = GlobalPlayerInformation.nome
-	
+	pass
 	
 func _physics_process(delta):
 	
@@ -79,9 +78,6 @@ func handle_wall_jump():
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		just_wall_jumped = true
-#	if Input.is_action_just_pressed("ui_up") and wall_normal == Vector2.RIGHT:
-#		velocity.x = wall_normal.x * movement_data.speed
-#		velocity.y = movement_data.jump_velocity
 
 func handle_jump():
 	if is_on_floor(): air_jump = true
@@ -127,8 +123,6 @@ func update_animations(input_axis):
 
 func _on_hazard_detector_area_entered(area):
 	global_position = starting_position
-	
-
 
 func _on_check_parede_body_entered(body):
 	if body.is_in_group("parede"):

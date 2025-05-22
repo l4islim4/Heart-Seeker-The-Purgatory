@@ -27,9 +27,12 @@ func _process(delta):
 	level_time_label.text = str(level_time / 1000.0)
 	
 func show_level_completed():
+	Tempoglobal.time_global += level_time / 1000.0
+	Tempoglobal.time_parcial = level_time / 1000.0
+	print("Tempo Total: ", Tempoglobal.time_global)
 	level_completed.show()
 	get_tree().paused = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.0).timeout
 	if not next_level is PackedScene: return
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false

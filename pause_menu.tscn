@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb4jt6g8wnbgh"]
+[gd_scene load_steps=3 format=3 uid="uid://bb4jt6g8wnbgh"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_wiwgh"]
+[ext_resource type="PackedScene" uid="uid://b25r6aa0fjw4a" path="res://background_sound.tscn" id="2_4p4qy"]
 
 [node name="Pause_Menu" type="CanvasLayer"]
 process_mode = 3
@@ -41,6 +42,8 @@ text = "Quit"
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="BackgroundSound" parent="." instance=ExtResource("2_4p4qy")]
 
 [connection signal="pressed" from="CenterContainer/Menu_holder/Resume_button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Menu_holder/RestartButton" to="." method="_on_restart_button_pressed"]

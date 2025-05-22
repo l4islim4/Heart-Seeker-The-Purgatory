@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25r6aa0fjw4a"]
+
+[ext_resource type="AudioStream" uid="uid://b2dq32talf87j" path="res://sounds/background_sound.mp3" id="1_7c5bb"]
+[ext_resource type="Script" path="res://BackgroundSound.gd" id="1_g6jfn"]
+
+[node name="BackgroundSound" type="Node2D"]
+script = ExtResource("1_g6jfn")
+
+[node name="BackgroundFases" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7c5bb")
+autoplay = true
+
+[connection signal="finished" from="BackgroundFases" to="." method="_on_background_fases_finished"]
+[connection signal="script_changed" from="BackgroundFases" to="." method="_on_background_fases_script_changed"]
